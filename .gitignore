@@ -8,3 +8,6 @@ tsconfig.tsbuildinfo
 # Foto original del equipo (caras reales identificables) — no versionar.
 # Solo se versiona la ilustración derivada en public/team-illustration.png.
 foto-equipo.jpg
+
+.vercel
+.env*

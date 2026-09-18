@@ -1,0 +1,10 @@
+node_modules
+.next
+.env.local
+.env*.local
+tsconfig.tsbuildinfo
+.vercel
+
+# Foto original del equipo (caras reales identificables) — no versionar.
+# Solo se versiona la ilustración derivada en public/team-illustration.png.
+foto-equipo.jpg

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -35,6 +35,49 @@ const PRIMARY_BUTTON_CLASS =
 const SECONDARY_BUTTON_CLASS =
   "inline-flex items-center justify-center rounded-md border border-stone-300 bg-white px-5 py-2.5 text-sm font-medium text-stone-700 shadow-sm transition hover:bg-stone-50";
 
+const BEER_MUG_COUNT = 14;
+const BEER_BURST_DURATION_MS = 2200;
+
+/**
+ * Lluvia momentánea de jarras de cerveza (🍺) al pulsar "Pedir cerveza".
+ * Se remonta con una `key` nueva en cada pulsación para que retrigee la
+ * animación aunque se pulse varias veces seguidas, y se desmonta sola pasado
+ * BEER_BURST_DURATION_MS (ver el setTimeout en GamePlayer).
+ */
+function BeerBurst() {
+  const mugs = useMemo(
+    () =>
+      Array.from({ length: BEER_MUG_COUNT }, (_, i) => ({
+        id: i,
+        left: Math.random() * 92 + 2,
+        delay: Math.random() * 0.5,
+        duration: 1.5 + Math.random() * 0.9,
+        size: 26 + Math.random() * 26,
+        rotate: (Math.random() - 0.5) * 70,
+      })),
+    []
+  );
+
+  return (
+    <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden">
+      {mugs.map((mug) => (
+        <span
+          key={mug.id}
+          className="absolute bottom-0 select-none"
+          style={{
+            left: `${mug.left}%`,
+            fontSize: `${mug.size}px`,
+            animation: `beer-rise ${mug.duration}s ease-out ${mug.delay}s forwards`,
+            ["--beer-rotate" as string]: `${mug.rotate}deg`,
+          }}
+        >
+          🍺
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export function GamePlayer({
   questions,
   replayHref,
@@ -45,11 +88,22 @@ export function GamePlayer({
   const [index, setIndex] = useState(0);
   const [selectedOptionId, setSelectedOptionId] = useState<number | null>(null);
   const [score, setScore] = useState(0);
+  const [beerBurstKey, setBeerBurstKey] = useState<number | null>(null);
 
   const total = questions.length;
   const current = questions[index];
   const isLast = index === total - 1;
   const hasAnswered = selectedOptionId !== null;
+
+  function handleOrderBeer() {
+    setBeerBurstKey(Date.now());
+  }
+
+  useEffect(() => {
+    if (beerBurstKey === null) return;
+    const timeout = setTimeout(() => setBeerBurstKey(null), BEER_BURST_DURATION_MS);
+    return () => clearTimeout(timeout);
+  }, [beerBurstKey]);
 
   function handleSelect(option: GameOption) {
     if (hasAnswered) return;
@@ -92,6 +146,16 @@ export function GamePlayer({
 
   return (
     <div className="space-y-5">
+      {beerBurstKey !== null && <BeerBurst key={beerBurstKey} />}
+
+      <button
+        type="button"
+        onClick={handleOrderBeer}
+        className="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 rounded-full bg-amber-700 px-4 py-3 text-sm font-semibold text-white shadow-lg transition hover:scale-105 hover:bg-amber-800 active:scale-95"
+      >
+        🍺 Pedir cerveza
+      </button>
+
       <div className="space-y-2">
         <div className="flex items-center justify-between text-sm font-medium text-stone-600">
           <span>

@@ -7,3 +7,18 @@ html {
 body {
   @apply bg-amber-50 text-stone-900;
 }
+
+@keyframes beer-rise {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(0.6);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(-10vh) rotate(calc(var(--beer-rotate, 20deg) * 0.2)) scale(1);
+  }
+  100% {
+    transform: translateY(-115vh) rotate(var(--beer-rotate, 20deg)) scale(1);
+    opacity: 0;
+  }
+}

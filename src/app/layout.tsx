@@ -3,7 +3,7 @@ import Link from "next/link";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Sábios del Lúpulo Simulator",
+  title: "Sabios del Lúpulo Simulator",
   description:
     "Recrea las partidas de trivial por equipos de los jueves en Checkpoint Arcade (Sevilla).",
 };
@@ -26,7 +26,7 @@ export default function RootLayout({
         <header className="border-b border-amber-200 bg-white">
           <div className="mx-auto flex max-w-4xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-4 sm:px-6">
             <Link href="/" className="text-lg font-bold text-amber-800">
-              🍺 Sábios del Lúpulo Simulator
+              🍺 Sabios del Lúpulo Simulator
             </Link>
             <nav className="flex flex-wrap gap-4 text-sm font-medium text-stone-600">
               {NAV_LINKS.map((link) => (

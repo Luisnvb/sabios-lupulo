@@ -1,6 +1,6 @@
-# Sábios del Lúpulo Simulator
+# Sabios del Lúpulo Simulator
 
-Recrea las partidas de trivial por equipos que "Los Sábios del Lúpulo" juegan
+Recrea las partidas de trivial por equipos que "Los Sabios del Lúpulo" juegan
 los jueves en Checkpoint Arcade (Sevilla). Next.js (App Router) + TypeScript +
 Drizzle ORM + PostgreSQL (Neon), tomando [trivia-friends](../trivia-friends)
 como referencia de arquitectura.

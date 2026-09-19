@@ -13,7 +13,7 @@ export default function HomePage() {
         <div className="relative aspect-[4/3] w-full sm:aspect-[16/9]">
           <Image
             src="/team-illustration.png"
-            alt="Ilustración del equipo Sábios del Lúpulo celebrando en Checkpoint Arcade"
+            alt="Ilustración del equipo Sabios del Lúpulo celebrando en Checkpoint Arcade"
             fill
             priority
             className="object-cover"
@@ -21,7 +21,7 @@ export default function HomePage() {
         </div>
         <div className="space-y-3 p-6 text-center">
           <h1 className="text-3xl font-bold tracking-tight text-stone-900">
-            Sábios del Lúpulo Simulator
+            Sabios del Lúpulo Simulator
           </h1>
           <p className="mx-auto max-w-xl text-stone-600">
             Revive el trivial por equipos de los jueves en Checkpoint Arcade

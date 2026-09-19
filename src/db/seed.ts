@@ -18,7 +18,7 @@ import { flagQuestions } from "./data/flags";
 import { animalQuestions } from "./data/animals";
 
 /**
- * Puebla la tabla `question` con el banco completo de Sábios del Lúpulo
+ * Puebla la tabla `question` con el banco completo de Sabios del Lúpulo
  * (~100 preguntas por categoría). Ejecutar con `npm run db:seed` tras
  * aplicar las migraciones.
  *
@@ -185,7 +185,7 @@ async function insertAll(prepared: PreparedQuestion[]) {
 }
 
 async function seed() {
-  console.log("Preparando banco de preguntas de Sábios del Lúpulo...");
+  console.log("Preparando banco de preguntas de Sabios del Lúpulo...");
 
   const prepared: PreparedQuestion[] = [
     ...prepareStandard("geography", geographyQuestions),

@@ -10,7 +10,7 @@ import {
 import { relations } from "drizzle-orm";
 
 /**
- * Esquema del banco de preguntas de Sábios del Lúpulo, inspirado en el
+ * Esquema del banco de preguntas de Sabios del Lúpulo, inspirado en el
  * modelo question/answer_option de trivia-friends. Cada pregunta pertenece
  * a una de las 8 categorías fijas del trivial de los jueves en Checkpoint
  * Arcade. "flags" y "animals" llevan además una imagen (bandera o foto de
